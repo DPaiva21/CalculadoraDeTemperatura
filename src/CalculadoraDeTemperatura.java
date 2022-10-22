@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.text.DecimalFormat;
 public class CalculadoraDeTemperatura {
     enum Scales {
         CELSIUS,
@@ -6,9 +7,8 @@ public class CalculadoraDeTemperatura {
         FAHRENHEIT
     }
 
-
-
     public static void main(String[] args) {
+        DecimalFormat decimalFormat = new DecimalFormat("###.##");
 
         Scales originScale, targetScale;
 
@@ -32,11 +32,11 @@ public class CalculadoraDeTemperatura {
         for(int i = 0; i < temperatures.length; i++) {
             totalOrigin += temperatures[i];
             totalTarget += convertedTemperatures[i];
-            System.out.println(temperatures[i] + "    " + convertedTemperatures[i]);
+            System.out.println(decimalFormat.format(temperatures[i]) + "    " + decimalFormat.format(convertedTemperatures[i]));
         }
 
         System.out.println("Media das Temperaturas:");
-        System.out.println((totalOrigin / temperatures.length) + "    " + (totalTarget / convertedTemperatures.length));
+        System.out.println(decimalFormat.format(totalOrigin / temperatures.length) + "    " + decimalFormat.format(totalTarget / convertedTemperatures.length));
 
     }
 
